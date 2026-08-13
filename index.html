@@ -1,1 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TC Pure Honey</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#fffaf0;
+  color:#333;
+}
+
+header{
+  background:#f5a623;
+  padding:18px;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  color:white;
+  font-size:25px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:0 8px;
+  font-weight:bold;
+}
+
+.hero{
+  padding:90px 20px;
+  text-align:center;
+  background:linear-gradient(#0006,#0006),#d88900;
+  color:white;
+}
+
+.hero h1{
+  font-size:45px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  font-size:20px;
+  margin-bottom:25px;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 24px;
+  margin:6px;
+  border-radius:8px;
+  background:#f5a623;
+  color:white;
+  text-decoration:none;
+  border:0;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.whatsapp{
+  background:#25d366;
+}
+
+section{
+  padding:55px 20px;
+  text-align:center;
+}
+
+h2{
+  color:#8a5100;
+  margin-bottom:30px;
+  font-size:32px;
+}
+
+.products{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.card{
+  background:white;
+  width:300px;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 4px 15px #0002;
+}
+
+.honey{
+  font-size:80px;
+  margin-bottom:15px;
+}
+
+.price{
+  color:#d88900;
+  font-size:25px;
+  margin:15px;
+}
+
+form{
+  max-width:500px;
+  margin:auto;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:14px;
+  margin:7px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
+
+textarea{
+  height:110px;
+}
+
+.contact{
+  background:#fff0cc;
+}
+
+footer{
+  background:#4a2800;
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:36px;
+  }
+
+  nav a{
+    font-size:14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">🍯 TC Pure Honey</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#products">Products</a>
+<a href="#order">Order</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</header>
+
+
+<section id="home" class="hero">
+
+<h1>🍯 TC Pure Honey</h1>
+
+<p>Pure sweetness from nature to your home.</p>
+
+<a href="#products" class="btn">Shop Now</a>
+
+<a href="https://wa.me/919342263366" class="btn whatsapp">
+WhatsApp Order
+</a>
+
+</section>
+
+
+<section>
+
+<h2>Why TC Pure Honey?</h2>
+
+<div class="products">
+
+<div class="card">
+<div class="honey">🐝</div>
+<h3>Natural Honey</h3>
+<p>Pure and naturally sourced honey.</p>
+</div>
+
+<div class="card">
+<div class="honey">🌿</div>
+<h3>Quality</h3>
+<p>Quality-focused honey and hygienic packing.</p>
+</div>
+
+<div class="card">
+<div class="honey">📦</div>
+<h3>Safe Delivery</h3>
+<p>Carefully packed for delivery.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="products">
+
+<h2>Our Products</h2>
+
+<div class="products">
+
+
+<div class="card">
+
+<div class="honey">🍯</div>
+
+<h3>TC Pure Honey</h3>
+
+<p>250ml</p>
+
+<div class="price">₹175</div>
+
+<a href="#order" class="btn">Order Now</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="honey">🍯</div>
+
+<h3>TC Pure Honey</h3>
+
+<p>500ml</p>
+
+<div class="price">₹350</div>
+
+<a href="#order" class="btn">Order Now</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="honey">🍯</div>
+
+<h3>TC Pure Honey</h3>
+
+<p>1 Liter</p>
+
+<div class="price">₹700</div>
+
+<a href="#order" class="btn">Order Now</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="order">
+
+<h2>Place Your Order</h2>
+
+<form onsubmit="orderWhatsApp();return false;">
+
+<input id="name" type="text"
+placeholder="Your Name" required>
+
+<input id="phone" type="tel"
+placeholder="Phone Number" required>
+
+<select id="product" required>
+
+<option value="">Select Product</option>
+
+<option>TC Pure Honey 250ml - ₹175</option>
+
+<option>TC Pure Honey 500ml - ₹350</option>
+
+<option>TC Pure Honey 1 Liter - ₹700</option>
+
+</select>
+
+<input id="quantity" type="number"
+min="1"
+placeholder="Quantity" required>
+
+<textarea id="address"
+placeholder="Delivery Address"
+required></textarea>
+
+<button class="btn whatsapp" type="submit">
+Order via WhatsApp
+</button>
+
+</form>
+
+</section>
+
+
+<section id="contact" class="contact">
+
+<h2>Contact Us</h2>
+
+<p>📱 WhatsApp: 9342263366</p>
+
+<p>📞 Phone: 9342263366</p>
+
+<p>📍 Tamil Nadu, India</p>
+
+<br>
+
+<a href="https://wa.me/919342263366"
+class="btn whatsapp">
+Chat on WhatsApp
+</a>
+
+</section>
+
+
+<footer>
+
+<h3>🍯 TC Pure Honey</h3>
+
+<p>Pure sweetness from nature.</p>
+
+<p>© 2026 TC Pure Honey</p>
+
+</footer>
+
+
+<script>
+
+function orderWhatsApp(){
+
+let name=document.getElementById("name").value;
+
+let phone=document.getElementById("phone").value;
+
+let product=document.getElementById("product").value;
+
+let quantity=document.getElementById("quantity").value;
+
+let address=document.getElementById("address").value;
+
+let message=
+"🍯 TC PURE HONEY ORDER\n\n"+
+"Name: "+name+"\n"+
+"Phone: "+phone+"\n"+
+"Product: "+product+"\n"+
+"Quantity: "+quantity+"\n"+
+"Address: "+address;
+
+window.open(
+"https://wa.me/919342263366?text="+
+encodeURIComponent(message),
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
+</html>
 
