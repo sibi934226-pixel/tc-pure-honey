@@ -1,375 +1,83 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ThenChittu Natural Honey</title>
-
-  <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script type="text/javascript">
-    (function(){
-      emailjs.init("6543ToAjP-Op9UaYP");
-    })();
+    (function(){ emailjs.init("6543ToAjP-Op9UaYP"); })();
   </script>
-
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: #fffdf5;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    header {
-      background: #4a2800;
-      color: white;
-      padding: 15px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-      color: #ffb703;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #ffb703;
-    }
-
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1587049352847-4a222e784d38?auto=format&fit=crop&w=1350&q=80');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: 100px 20px;
-    }
-
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
-      color: #ffb703;
-    }
-
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 25px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #ffb703;
-      color: #4a2800;
-      padding: 12px 30px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 25px;
-      transition: 0.3s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: #fb8500;
-      color: white;
-    }
-
-    section {
-      padding: 55px 20px;
-      text-align: center;
-    }
-
-    h2 {
-      color: #8a5100;
-      margin-bottom: 30px;
-      font-size: 32px;
-    }
-
-    .products {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      background: white;
-      width: 300px;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px #0002;
-    }
-
-    .honey {
-      font-size: 80px;
-      margin-bottom: 15px;
-    }
-
-    .price {
-      color: #d88900;
-      font-size: 25px;
-      margin: 15px;
-    }
-
-    form {
-      max-width: 500px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 14px;
-      margin: 7px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    textarea {
-      height: 110px;
-    }
-
-    .loc-btn {
-      background: #28a745;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      margin: 5px 0 10px 0;
-      cursor: pointer;
-    }
-
-    .submit-btn {
-      background: #ffb703;
-      color: #4a2800;
-      font-weight: bold;
-      font-size: 18px;
-      cursor: pointer;
-      border: none;
-    }
-
-    .submit-btn:hover {
-      background: #fb8500;
-      color: white;
-    }
-
-    .contact {
-      background: #fff0cc;
-    }
-
-    footer {
-      background: #4a2800;
-      color: white;
-      text-align: center;
-      padding: 30px;
-    }
-
-    #successBox {
-      display: none;
-      background: #e6f4ea;
-      border: 2px solid #28a745;
-      color: #137333;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 32px;
-      }
-      nav a {
-        font-size: 14px;
-      }
-    }
+    body { font-family: sans-serif; background-color: #fffdf5; margin: 0; padding: 0; }
+    header { background-color: #fca311; padding: 15px; text-align: center; color: white; }
+    .nav { margin-top: 10px; }
+    .nav a { color: white; text-decoration: none; margin: 0 10px; font-weight: bold; }
+    .container { padding: 20px; }
+    input, select, textarea { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; background-color: #eef4fc; }
+    .btn-gps { width: 100%; background-color: #007bff; color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; }
+    .status { margin: 10px 0; color: green; font-weight: bold; text-align: center; }
+    .msg-box { border: 2px solid #28a745; background-color: #e6f4ea; padding: 20px; border-radius: 10px; text-align: center; display: none; }
+    .msg-box h3 { color: #28a745; margin: 0; }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">🍯 ThenChittu Natural Honey</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#products">Products</a>
-      <a href="#order">Order</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <h2>🍯 ThenChittu Natural Honey</h2>
+    <div class="nav">
+      <a href="#">Home</a> <a href="#">Products</a> <a href="#">Order</a> <a href="#">Contact</a>
+    </div>
   </header>
 
-  <section id="home" class="hero">
-    <h1>🍯 ThenChittu Natural Honey</h1>
-    <p>Pure sweetness from nature to your home.</p>
-    <a href="#products" class="btn">Shop Now</a>
-    <a href="#order" class="btn" style="background: #ffffff; color: #4a2800; margin-left: 10px;">Order Now</a>
-  </section>
-
-  <section>
-    <h2>Why ThenChittu Natural Honey?</h2>
-    <div class="products">
-      <div class="card">
-        <div class="honey">🐝</div>
-        <h3>100% Natural</h3>
-        <p>Pure and naturally sourced honey.</p>
-      </div>
-      <div class="card">
-        <div class="honey">🌿</div>
-        <h3>Hygienic Packaging</h3>
-        <p>Quality-focused honey and safe packing.</p>
-      </div>
-      <div class="card">
-        <div class="honey">📦</div>
-        <h3>Fast Delivery</h3>
-        <p>Carefully packed and delivered to your doorstep.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="products">
-    <h2>Our Products</h2>
-    <div class="products">
-      <div class="card">
-        <div class="honey">🍯</div>
-        <h3>ThenChittu Natural Honey</h3>
-        <p>250ml</p>
-        <div class="price">₹300</div>
-        <a href="#order" class="btn">Order Now</a>
-      </div>
-      <div class="card">
-        <div class="honey">🍯</div>
-        <h3>ThenChittu Natural Honey</h3>
-        <p>500ml</p>
-        <div class="price">₹600</div>
-        <a href="#order" class="btn">Order Now</a>
-      </div>
-      <div class="card">
-        <div class="honey">🍯</div>
-        <h3>ThenChittu Natural Honey</h3>
-        <p>1 Liter</p>
-        <div class="price">₹1200</div>
-        <a href="#order" class="btn">Order Now</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="order">
-    <h2>Place Your Order</h2>
-    <form id="orderForm" onsubmit="processOrder(event)">
-      <input id="name" type="text" placeholder="Your Name" required>
-      <input id="phone" type="tel" placeholder="Phone Number" required>
-      <select id="product" required>
-        <option value="">Select Product</option>
+  <div class="container">
+    <form id="orderForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      
+      <select id="product">
         <option>ThenChittu Natural Honey 250ml - ₹300</option>
         <option>ThenChittu Natural Honey 500ml - ₹600</option>
-        <option>ThenChittu Natural Honey 1 Liter - ₹1200</option>
       </select>
-      <input id="quantity" type="number" min="1" placeholder="Quantity" required>
-      <textarea id="address" placeholder="Door No, Street Name, City, Pincode" required></textarea>
       
-      <button type="button" class="loc-btn" onclick="getLocation()">📍 Share Live Location (Optional)</button>
-      <p id="locStatus" style="font-size: 14px; color: #666;"></p>
-      <input id="map_location" type="hidden" value="Not Provided">
-
-      <button class="submit-btn" type="submit" id="subBtn">Submit Order</button>
-
-      <div id="successBox">
-        ✅ Order Placed Successfully!<br>
-        <span style="font-size:14px; font-weight:normal;">We will contact you shortly for delivery.</span>
-      </div>
+      <input type="number" id="quantity" placeholder="1" value="1">
+      <textarea id="address" placeholder="Address" rows="4"></textarea>
+      
+      <button type="button" class="btn-gps" onclick="getLocation()">📍 Use My Current Location (GPS)</button>
+      <p id="locStatus" class="status"></p>
+      
+      <button type="submit" class="btn-gps" style="background-color: #28a745; margin-top: 10px;">Submit Order</button>
     </form>
-  </section>
 
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p>📱 WhatsApp: 9342263366</p>
-    <p>📞 Phone: 9342263366</p>
-    <p>📍 Tamil Nadu, India</p>
-  </section>
-
-  <footer>
-    <h3>🍯 ThenChittu Natural Honey</h3>
-    <p>Pure sweetness from nature.</p>
-    <p>© 2026 ThenChittu Natural Honey</p>
-  </footer>
+    <div id="successMsg" class="msg-box" style="margin-top: 20px;">
+      <h3>✅ Order Placed Successfully!</h3>
+      <p>நன்றி! உங்கள் ஆர்டர் பெறப்பட்டது. விரைவில் உங்களை தொடர்பு கொள்கிறோம்.</p>
+    </div>
+  </div>
 
   <script>
     function getLocation() {
-      let status = document.getElementById("locStatus");
       if (navigator.geolocation) {
-        status.innerText = "Finding location... ⏳";
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            let lat = position.coords.latitude;
-            let lng = position.coords.longitude;
-            let mapUrl = `https://www.google.com/maps?q=${lat},${lng}`;
-            document.getElementById("map_location").value = mapUrl;
-            status.innerText = "📍 Location captured successfully!";
-            status.style.color = "#28a745";
-          },
-          (error) => {
-            status.innerText = "⚠️ Please enable GPS and try again.";
-            status.style.color = "red";
-          }
-        );
-      } else {
-        status.innerText = "Geolocation is not supported by this browser.";
+        navigator.geolocation.getCurrentPosition(() => {
+          document.getElementById('locStatus').innerText = '📍 Location captured! ✅';
+        });
       }
     }
 
-    function processOrder(e) {
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
       e.preventDefault();
-
-      let btn = document.getElementById("subBtn");
-      btn.innerText = "Processing... ⏳";
-      btn.disabled = true;
-
-      let templateParams = {
-        user_name: document.getElementById("name").value,
-        user_phone: document.getElementById("phone").value,
-        user_product: document.getElementById("product").value,
-        user_quantity: document.getElementById("quantity").value,
-        user_address: document.getElementById("address").value,
-        user_location: document.getElementById("map_location").value
-      };
-
-      emailjs.send('service_rwfxqy9', 'template_bowksvf', templateParams)
-        .then(function(response) {
-          document.getElementById("orderForm").reset();
-          btn.style.display = "none";
-          document.getElementById("successBox").style.display = "block";
-        }, function(error) {
-          btn.style.display = "none";
-          document.getElementById("successBox").style.display = "block";
-        });
-    }
+      emailjs.send('service_rwfxqy9', 'template_bowksvf', {
+        user_name: document.getElementById('name').value,
+        user_phone: document.getElementById('phone').value,
+        user_product: document.getElementById('product').value,
+        user_quantity: document.getElementById('quantity').value,
+        user_address: document.getElementById('address').value
+      }).then(() => {
+        document.getElementById('orderForm').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      });
+    });
   </script>
 </body>
-   </html>
-           
+</html>
