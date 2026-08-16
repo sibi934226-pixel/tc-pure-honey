@@ -109,6 +109,53 @@ nav a{
   cursor: pointer;
 }
 
+/* Payment Button Style */
+.pay-toggle-btn {
+  background: #f5a623; 
+  color: white; 
+  width: 100%; 
+  padding: 14px; 
+  border: none; 
+  border-radius: 8px; 
+  font-weight: bold; 
+  cursor: pointer; 
+  margin: 10px 0; 
+  font-size: 17px; 
+  text-align: center;
+}
+
+/* Payment Box UI */
+.payment-options {
+  display: none; 
+  background: #fff; 
+  border: 2px solid #f5a623; 
+  border-radius: 8px; 
+  padding: 18px; 
+  margin: 10px 0; 
+  text-align: left;
+}
+
+.payment-options p {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.radio-group {
+  margin: 12px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.radio-group input {
+  width: auto;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
 section{
   padding:55px 20px;
   text-align:center;
@@ -294,13 +341,33 @@ footer{
 <option>ThenChittu Natural Honey 1 Liter - ₹1200</option>
 </select>
 
-<input id="quantity" type="number" min="1" placeholder="Quantity" required>
+<!-- இங்கதான் மாற்றப்பட்டுள்ளது (value="1") -->
+<input id="quantity" type="number" min="1" value="1" placeholder="Quantity" required>
 
 <textarea id="address" placeholder="Door No, Street Name, Landmark" required></textarea>
 
 <button type="button" class="loc-btn" onclick="getLocation()">📍 Use My Current Location (GPS)</button>
 <p id="locStatus" style="font-size:14px; color:#555; margin-bottom:10px;"></p>
 <input id="map_location" type="hidden" value="Not provided">
+
+<!-- PAYMENT BUTTON & OPTIONS -->
+<button type="button" class="pay-toggle-btn" onclick="togglePaymentOptions()">💳 Payment</button>
+
+<div id="paymentOptions" class="payment-options">
+    <p>Choose Payment Method:</p>
+    
+    <label class="radio-group">
+        <input type="radio" name="payMethod" value="UPI / Online Payment" onclick="selectMethod('UPI / Online Payment')">
+        UPI / Online Payment
+    </label>
+    
+    <label class="radio-group">
+        <input type="radio" name="payMethod" value="Cash on Delivery" onclick="selectMethod('Cash on Delivery')">
+        Cash on Delivery
+    </label>
+</div>
+
+<input type="hidden" id="selectedPayment" value="">
 
 <button class="submit-btn" type="submit" id="subBtn">Submit Order</button>
 
@@ -349,8 +416,23 @@ function getLocation() {
   }
 }
 
+function togglePaymentOptions() {
+    let options = document.getElementById("paymentOptions");
+    options.style.display = (options.style.display === "block") ? "none" : "block";
+}
+
+function selectMethod(method) {
+    document.getElementById("selectedPayment").value = method;
+}
+
 function processOrder(e){
   e.preventDefault();
+
+  let payMethod = document.getElementById("selectedPayment").value;
+  if(payMethod === "") {
+      alert("தயவுசெய்து ஒரு பேமென்ட் முறையைத் தேர்வு செய்யவும்!");
+      return;
+  }
 
   let btn = document.getElementById("subBtn");
   btn.innerText = "Processing... ⏳";
@@ -362,12 +444,14 @@ function processOrder(e){
     user_product: document.getElementById("product").value,
     user_quantity: document.getElementById("quantity").value,
     user_address: document.getElementById("address").value,
-    user_location: document.getElementById("map_location").value
+    user_location: document.getElementById("map_location").value,
+    user_payment: payMethod
   };
 
   emailjs.send('service_rwfxqy9', 'template_bowksvf', templateParams)
     .then(function(response) {
        document.getElementById("orderForm").reset();
+       document.getElementById("paymentOptions").style.display = "none";
        btn.style.display = "none";
        document.getElementById("successBox").style.display = "block";
     }, function(error) {
@@ -378,5 +462,6 @@ function processOrder(e){
 </script>
 
 </body>
-</html>
+   </html>
+   
 
