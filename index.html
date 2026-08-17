@@ -238,6 +238,18 @@ footer{
   font-weight: bold;
 }
 
+#errorBox {
+  display: none;
+  background: #fce8e6;
+  border: 2px solid #d93025;
+  color: #c5221f;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 @media(max-width:600px){
   .hero h1{
     font-size:32px;
@@ -336,9 +348,10 @@ footer{
 
 <select id="product" required>
 <option value="">Select Product</option>
-<option>ThenChittu Natural Honey 250ml - ₹300</option>
-<option>ThenChittu Natural Honey 500ml - ₹600</option>
-<option>ThenChittu Natural Honey 1 Liter - ₹1200</option>
+
+<option value="300">ThenChittu Natural Honey 250ml - ₹300</option>
+<option value="600">ThenChittu Natural Honey 500ml - ₹600</option>
+<option value="1200">ThenChittu Natural Honey 1 Liter - ₹1200</option>
 </select>
 
 <!-- இங்கதான் மாற்றப்பட்டுள்ளது (value="1") -->
@@ -374,6 +387,11 @@ footer{
 <div id="successBox">
   ✅ Order Placed Successfully!<br>
   <span style="font-size:14px; font-weight:normal; color:#333;">நன்றி! உங்கள் ஆர்டர் பெறப்பட்டது. விரைவில் உங்களை தொடர்பு கொள்கிறோம்.</span>
+</div>
+
+<div id="errorBox">
+  ❌ Order Submission Failed!<br>
+  <span style="font-size:14px; font-weight:normal;">தொழில்நுட்பக் கோளாறு காரணமாக ஆர்டர் சமர்ப்பிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.</span>
 </div>
 
 </form>
@@ -435,14 +453,25 @@ function processOrder(e){
   }
 
   let btn = document.getElementById("subBtn");
+  let successBox = document.getElementById("successBox");
+  let errorBox = document.getElementById("errorBox");
+
   btn.innerText = "Processing... ⏳";
   btn.disabled = true;
+  successBox.style.display = "none";
+  errorBox.style.display = "none";
+
+  let productSelect = document.getElementById("product");
+  let price = productSelect.value;
+  let qty = document.getElementById("quantity").value || 1;
+  let productText = productSelect.options[productSelect.selectedIndex].text;
+  let totalAmount = price * qty;
 
   let templateParams = {
     user_name: document.getElementById("name").value,
     user_phone: document.getElementById("phone").value,
-    user_product: document.getElementById("product").value,
-    user_quantity: document.getElementById("quantity").value,
+    user_product: productText,
+    user_quantity: qty,
     user_address: document.getElementById("address").value,
     user_location: document.getElementById("map_location").value,
     user_payment: payMethod
@@ -453,15 +482,21 @@ function processOrder(e){
        document.getElementById("orderForm").reset();
        document.getElementById("paymentOptions").style.display = "none";
        btn.style.display = "none";
-       document.getElementById("successBox").style.display = "block";
+       successBox.style.display = "block";
+
+       // UPI தேர்ந்தெடுத்திருந்தால் மட்டும் GPay / PhonePe Deeplink ஓபன் ஆகும்
+       if(payMethod === "UPI / Online Payment") {
+          let upiUrl = `upi://pay?pa=sibi934226-1@okaxis&pn=ThenChittu%20Honey&am=${totalAmount}&cu=INR`;
+          window.location.href = upiUrl;
+       }
     }, function(error) {
-       btn.style.display = "none";
-       document.getElementById("successBox").style.display = "block";
+       console.error("EmailJS Error:", error);
+       btn.innerText = "Submit Order";
+       btn.disabled = false;
+       errorBox.style.display = "block";
     });
 }
 </script>
 
 </body>
    </html>
-   
-
