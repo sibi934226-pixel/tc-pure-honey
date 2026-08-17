@@ -467,16 +467,15 @@ function processOrder(e){
   let productText = productSelect.options[productSelect.selectedIndex].text;
   let totalAmount = price * qty;
 
-  let t  let templateParams = {
+  let templateParams = {
     user_name: document.getElementById("name").value,
     user_phone: document.getElementById("phone").value,
     user_product: productText,
     user_quantity: qty,
     user_address: document.getElementById("address").value,
     user_location: document.getElementById("map_location").value,
-    payment_method: payMethod // ✅ சரி செய்யப்பட்டது
+    user_payment: payMethod
   };
-   
 
   emailjs.send('service_rwfxqy9', 'template_bowksvf', templateParams)
     .then(function(response) {
@@ -500,4 +499,4 @@ function processOrder(e){
 </script>
 
 </body>
-   </html>
+</html>
